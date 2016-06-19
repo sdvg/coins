@@ -3,10 +3,7 @@
 function routeConfig($urlRouterProvider) {
   'ngInject';
 
-
-
   $urlRouterProvider.otherwise('/');
-
 }
 
 export default angular
