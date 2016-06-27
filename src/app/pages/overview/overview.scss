@@ -1,0 +1,23 @@
+.page-overview {
+    .current {
+        line-height: 30px;
+    }
+
+    .table {
+        margin-top: 1rem;
+
+        td {
+            padding: 0;
+        }
+
+        a {
+            display: block;
+            padding: 0.75rem;
+            color: #373a3c;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

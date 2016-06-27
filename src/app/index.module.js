@@ -18,8 +18,10 @@ const App = angular.module(
     require("./index.routes").name,
 
     // pages
-    require("./pages/start/start.module").name
-
+    require("./pages/start/start.module").name,
+    require("./pages/overview/overview.module").name,
+    require("./pages/expense/expense.module").name,
+    require("./pages/tags/tags.module").name
   ]
 );
 

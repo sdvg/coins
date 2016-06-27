@@ -102,7 +102,7 @@ module.exports = function(_path) {
           "expose?angular"
         ]
       },
-      
+
       ]
     },
 
@@ -140,7 +140,7 @@ module.exports = function(_path) {
         filename: 'index.html',
         template: path.join(_path, 'src', 'tpl-index.html')
       })
-    ]
+    ],
   };
 
   if (NODE_ENV !== 'development') {

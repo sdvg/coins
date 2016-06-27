@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<div class="page-overview">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <button class="btn btn-primary btn-sm" ng-click="overview.goPrev()" type="button">←</button>
+            </div>
+
+            <div class="col-xs-6 text-xs-center">
+                <p class="current">
+                    {{ overview.currentDate | date: 'MMMM yyyy' }}:
+                    <strong>{{ overview.monthExpenses | number }}</strong>
+                </p>
+            </div>
+
+            <div class="col-xs-3 text-xs-right">
+                <button class="btn btn-primary btn-sm" ng-click="overview.goNext()" type="button">→</button>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped" ng-show="overview.expenses.length">
+        <tbody>
+            <tr ng-repeat="expense in overview.expenses | orderBy: '-date'">
+                <td>
+                    <a ui-sref="editExpense({id: expense.id})">
+                        {{ expense.date | date: 'yyyy-MM-dd' }}
+                    </a>
+                </td>
+                <td class="text-xs-right">
+                    <a ui-sref="editExpense({id: expense.id})">
+                        {{ expense.amount | number: 2 }}
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container" ng-hide="overview.expenses.length">
+        <p>No expenses in {{ overview.currentDate | date: 'MMMM' }} yet.</p>
+    </div>
+
+    <div class="container">
+        <a class="btn btn-primary btn-lg btn-block" ui-sref="addExpense">Add Expense</a>
+    </div>
+</div>

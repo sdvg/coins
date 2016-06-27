@@ -1,0 +1,17 @@
+{
+  "port": "2048",
+  "account": {
+    "notifications": {
+      "from": "",
+      "transport": {
+        "service": "smtp",
+        "host": "",
+        "port": "25",
+        "auth": {
+          "user": "",
+          "pass": ""
+        }
+      }
+    }
+  }
+}

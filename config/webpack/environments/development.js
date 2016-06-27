@@ -10,7 +10,8 @@ module.exports = function(_path) {
       contentBase: './dist',
       info: true,
       hot: true,
-      inline: true
+      inline: true,
+      historyApiFallback: true
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin()

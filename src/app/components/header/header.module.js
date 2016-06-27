@@ -1,5 +1,3 @@
-'use strict';
-
 import headerDirective from './header.directive';
 import './header.scss';
 

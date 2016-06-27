@@ -1,23 +1,18 @@
-'use strict';
-
 import headerTpl from './header.html';
 
-function headerComponent($log) {
+function headerComponent() {
   'ngInject';
 
-  var directive = {
+  return {
     restrict: 'E',
     templateUrl: headerTpl,
     controller: HeaderController,
     controllerAs: 'vm',
     bindToController: true
   };
+}
 
-  return directive;
-
-  function HeaderController () {
-  }
-
+function HeaderController () {
 }
 
 export default headerComponent;
