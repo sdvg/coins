@@ -1,6 +1,7 @@
 'use strict';
 
 import route from './signUp.route';
+import './signUp.scss';
 
 const signUpPageModule = angular.module('signUp-module', [
   'ui.router'

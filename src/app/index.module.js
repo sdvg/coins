@@ -7,6 +7,7 @@ const App = angular.module(
   "expenses", [
     // plugins
     require('angular-ui-router'),
+    require('angular-validation-match'),
 
     // core
     require("./core/core.module").name,

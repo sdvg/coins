@@ -1,5 +1,5 @@
 function expensesFactory ($q, hoodie) {
-    'ngInject'
+    'ngInject';
 
     const store = hoodie.store('expense');
 
@@ -12,8 +12,6 @@ function expensesFactory ($q, hoodie) {
     };
 
     function findByMonth (date) {
-        const defer = $q.defer();
-
         const year = date.getYear();
         const month = date.getMonth();
 

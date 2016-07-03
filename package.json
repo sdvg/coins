@@ -11,6 +11,7 @@
   "dependencies": {
     "angular": "^1.5.7",
     "angular-ui-router": "^0.3.1",
+    "angular-validation-match": "^1.9.0",
     "assets-webpack-plugin": "^3.2.0",
     "autoprefixer-core": "^5.2.1",
     "babel-core": "^6.7.6",
