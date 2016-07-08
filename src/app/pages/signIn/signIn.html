@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<main class="page-signIn container">
+    <div class="alert alert-danger" role="alert" ng-if="signIn.errorMessage">
+        {{ signIn.errorMessage }}
+    </div>
+
+    <form name="signIn.form" ng-submit="signIn.form.$valid && signIn.submit(signIn.user)" novalidate>
+        <div class="form-group" ng-class="{'has-danger': (signIn.form.$submitted || signIn.form.email.$touched) && signIn.form.email.$invalid}">
+            <label class="form-control-label" for="signIn-email">Email</label>
+            <input class="form-control" type="email" id="signIn-email" name="email" ng-model="signIn.user.email" required>
+
+            <div class="text-help" ng-show="(signIn.form.$submitted || signIn.form.email.$touched) && signIn.form.email.$invalid">
+                Please enter your email address.
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-danger': (signIn.form.$submitted || signIn.form.password.$touched) && signIn.form.password.$invalid}">
+            <label class="password-label form-control-label" for="signIn-password">
+                Password
+                <a ui-sref="requestPasswordReset">Forgot your password?</a>
+            </label>
+            <input type="password" class="form-control" id="signIn-password" name="password" ng-model="signIn.user.password" required>
+
+            <div class="text-help" ng-show="(signIn.form.$submitted || signIn.form.password.$touched) && signIn.form.password.$invalid">
+                Please enter your password.
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button>
+    </form>
+
+    <p class="signUp-hint">
+        <a ui-sref="signUp">Don't have an account yet?</a>
+    </p>
+</main>

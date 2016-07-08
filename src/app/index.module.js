@@ -23,7 +23,8 @@ const App = angular.module(
     require("./pages/overview/overview.module").name,
     require("./pages/expense/expense.module").name,
     require("./pages/tags/tags.module").name,
-    require("./pages/signUp/signUp.module").name
+    require("./pages/signUp/signUp.module").name,
+    require("./pages/signIn/signIn.module").name
   ]
 );
 
