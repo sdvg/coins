@@ -2,7 +2,7 @@ import Hoodie from '@hoodie/client';
 
 function hoodieFactory () {
     const hoodie = new Hoodie({
-        url: `//${location.hostname}:2048`
+        url: `${location.protocol}//${location.hostname}:2048`
     });
 
     window.hoodie = hoodie;

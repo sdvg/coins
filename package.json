@@ -32,7 +32,7 @@
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^0.9.1",
     "file-loader": "^0.8.4",
-    "hoodie": "^22.6.0",
+    "hoodie": "^23.1.0",
     "html-loader": "^0.3.0",
     "html-webpack-plugin": "^1.7.0",
     "imagemin-pngquant": "^4.2.0",
