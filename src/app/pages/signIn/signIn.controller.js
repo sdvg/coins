@@ -10,7 +10,10 @@ function SignInController($scope, $state, account) {
     };
 
     hoodie.account.signIn(credentials).then(
-        () => $state.go('overview'),
+        () => {
+          //workaround for https://github.com/hoodiehq/hoodie/issues/503
+          location.href = $state.href('overview')
+        },
 
         (error) => {
           console.log(error.name);
