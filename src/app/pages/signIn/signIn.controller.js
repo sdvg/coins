@@ -9,7 +9,7 @@ function SignInController($scope, $state, account) {
       password: user.password
     };
 
-    hoodie.account.signIn(credentials).then(
+    account.signIn(credentials).then(
         () => {
           //workaround for https://github.com/hoodiehq/hoodie/issues/503
           location.href = $state.href('overview')
@@ -22,8 +22,6 @@ function SignInController($scope, $state, account) {
             ConnectionError: 'Could not connect to server.',
             UnauthorizedError: 'Invalid credentials.'
           }[error.name] || `Login failed. Reason: ${error.message}`;
-
-          $scope.$apply();
         }
     );
   }
