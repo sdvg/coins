@@ -3,6 +3,11 @@
 function SignUpController($state, account) {
   'ngInject';
 
+  if(account.isSignedIn()) {
+    $state.go('start');
+    return;
+  }
+
   this.submit = (user) => {
     const credentials = {
       username: user.email,

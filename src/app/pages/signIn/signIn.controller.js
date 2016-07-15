@@ -3,6 +3,11 @@
 function SignInController($scope, $state, account) {
   'ngInject';
 
+  if(account.isSignedIn()) {
+    $state.go('start');
+    return;
+  }
+
   this.submit = (user) => {
     const credentials = {
       username: user.email,
@@ -16,8 +21,6 @@ function SignInController($scope, $state, account) {
         },
 
         (error) => {
-          console.log(error.name);
-
           this.errorMessage = {
             ConnectionError: 'Could not connect to server.',
             UnauthorizedError: 'Invalid credentials.'
