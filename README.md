@@ -1,14 +1,7 @@
-# Expenses Tracker
+# Coins
 
-## Todo
-
-* [X] Add expense
-* [X] Update expense
-* [X] List expenses by month
-* [x] Manage tags
-* [] SignUp
-* [] Login
-* [] Sync
-* [] Reset password
-* [] Edit profile
-* [] Delete profile
+> Coins is a expenses tracker PWA based on Hoodie.
+ 
+## License
+ 
+MIT © [Stefan Dietz](https://github.com/sdvg)
