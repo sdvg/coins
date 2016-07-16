@@ -19,12 +19,12 @@
 
         <fieldset class="form-group" ng-class="{'has-danger': form.$submitted && form.tag.$invalid}">
             <label class="control-label" for="expense-tags">Tag</label>
-            <select class="form-control"
+            <select class="form-control c-select"
                     id="expense-tags"
                     ng-model="expense.expense.tag"
                     name="tag"
                     required>
-                <option value="">Select a tag...</option>
+                <option value="" selected>Select a tag...</option>
                 <option ng-repeat="tag in expense.availableTags" value="{{ tag.id }}">
                     {{ tag.name }}
                 </option>

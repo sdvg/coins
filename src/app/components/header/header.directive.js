@@ -8,7 +8,8 @@ function headerComponent() {
     templateUrl: headerTpl,
     controller: HeaderController,
     controllerAs: 'vm',
-    bindToController: true
+    bindToController: true,
+    scope: {}
   };
 }
 

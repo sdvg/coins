@@ -17,6 +17,7 @@ function OverviewController($scope, expenses, $locale) {
   };
 
   getCurrentMonth();
+  expenses.onUpdate(getCurrentMonth);
 
   this.goPrev = () => {
     currentDate.setMonth(currentDate.getMonth() - 1);

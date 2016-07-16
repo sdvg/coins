@@ -10,7 +10,7 @@
             <div class="col-xs-6 text-xs-center">
                 <p class="current">
                     {{ overview.currentDate | date: 'MMMM yyyy' }}:
-                    <strong>{{ overview.monthExpenses | number }}</strong>
+                    <strong>{{ overview.monthExpenses | number: 2 }}</strong>
                 </p>
             </div>
 
@@ -37,7 +37,7 @@
         </tbody>
     </table>
 
-    <div class="container" ng-hide="overview.expenses.length">
+    <div class="container" ng-hide="!overview.expenses || overview.expenses.length">
         <p>No expenses in {{ overview.currentDate | date: 'MMMM' }} yet.</p>
     </div>
 

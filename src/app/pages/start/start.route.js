@@ -10,7 +10,9 @@ function routeConfig($stateProvider) {
       url: '/',
       templateUrl: startTpl,
       controller: require('./start.controller'),
-      controllerAs: 'start'
+      controllerAs: 'vm',
+      bindToController: true,
+      scope: {}
     });
 
 }
