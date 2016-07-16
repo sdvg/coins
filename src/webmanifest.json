@@ -4,7 +4,7 @@
   "start_url": "./",
   "display": "standalone",
   "description": "Coins is a Webapp that allows you to track your expenses and access them across your digital devices.",
-  "background_color": "#FFEB3B",
+  "background_color": "#0275D8",
   "icons": [
     {
       "src": "./assets/images/icons/android-chrome-192x192.png",
