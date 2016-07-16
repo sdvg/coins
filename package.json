@@ -34,7 +34,7 @@
     "file-loader": "^0.8.4",
     "hoodie": "^23.1.0",
     "html-loader": "^0.3.0",
-    "html-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^2.22.0",
     "imagemin-pngquant": "^4.2.0",
     "jquery": "^2.1.4",
     "lodash": "~4.5.0",
@@ -47,6 +47,7 @@
     "style-loader": "^0.13.0",
     "url": "^0.11.0",
     "url-loader": "^0.5.6",
+    "web-app-manifest-loader": "^0.1.1",
     "webpack": "^1.12.12",
     "webpack-dev-server": "1.14.0"
   },
