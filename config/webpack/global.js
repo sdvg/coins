@@ -7,6 +7,7 @@ var autoprefixer = require('autoprefixer-core');
 var Manifest = require('manifest-revision-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+var AppCachePlugin = require('appcache-webpack-plugin');
 
 var NODE_ENV = process.env.NODE_ENV || "production";
 var DEVELOPMENT = NODE_ENV === "production" ? false : true;
@@ -141,6 +142,11 @@ module.exports = function (_path) {
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: path.join(_path, 'src', 'tpl-index.ejs')
+      }),
+      new AppCachePlugin({
+        network: ['/sockjs-node/*'],
+        fallback: ['/ /'],
+        output: 'cache.manifest'
       })
     ],
   };
