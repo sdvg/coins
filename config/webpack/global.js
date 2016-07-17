@@ -4,7 +4,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer-core');
-var Manifest = require('manifest-revision-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var AppCachePlugin = require('appcache-webpack-plugin');
@@ -128,27 +127,27 @@ module.exports = function (_path) {
       new webpack.optimize.AggressiveMergingPlugin({
         moveToParents: true
       }),
+
       new webpack.optimize.CommonsChunkPlugin({
         name: 'common',
         async: true,
         children: true,
         minChunks: Infinity
       }),
-      new Manifest(path.join(_path + '/config', 'manifest.json'), {
-        rootAssetPath: rootAssetPath,
-        ignorePaths: ['.DS_Store']
-      }),
+
       new ExtractTextPlugin('assets/styles/css/[name]' + (NODE_ENV === 'development' ? '' : '.[chunkhash]') + '.css', {allChunks: true}),
+
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: path.join(_path, 'src', 'tpl-index.ejs')
       }),
+
       new AppCachePlugin({
         network: ['/sockjs-node/*'],
         fallback: ['/ /'],
         output: 'cache.manifest'
-      })
-    ],
+      }),
+    ]
   };
 
   if (NODE_ENV !== 'development') {
