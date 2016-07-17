@@ -9,12 +9,9 @@ module.exports = function(_path) {
     devServer: {
       contentBase: './dist',
       info: true,
-      hot: true,
+      hot: false,
       inline: true,
       historyApiFallback: true
-    },
-    plugins: [
-      new webpack.HotModuleReplacementPlugin()
-    ]
+    }
   };
 };
