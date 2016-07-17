@@ -1,5 +1,6 @@
 {
   "port": "2048",
+  "public": "dist",
   "account": {
     "notifications": {
       "from": "",

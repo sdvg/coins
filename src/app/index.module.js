@@ -1,7 +1,7 @@
 'use strict';
 
-import * as components from './index.components';
 import config from './index.config';
+import appConfig from './index.appConfig';
 
 const App = angular.module(
   "expenses", [
@@ -29,7 +29,8 @@ const App = angular.module(
 );
 
 App
-  .config(config);
+  .config(config)
+  .constant('appConfig', appConfig);
 
 
 
