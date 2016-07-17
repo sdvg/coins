@@ -1,11 +1,11 @@
 'use strict';
 
-function config($logProvider) {
-	'ngInject';
+function config($compileProvider, $logProvider) {
+  'ngInject';
 
-  // Enable log
-  $logProvider.debugEnabled(true);
-  
+  const isDev = NODE_ENV === 'development';
+  $logProvider.debugEnabled(isDev);
+  $compileProvider.debugInfoEnabled(isDev);
 }
 
 export default config;
