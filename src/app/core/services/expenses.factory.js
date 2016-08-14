@@ -8,6 +8,7 @@ function expensesFactory($q, hoodie, tags) {
     update: store.update.bind(store),
     findAll: store.findAll.bind(store),
     find: store.find.bind(store),
+    remove: store.remove.bind(store),
     onUpdate: callback => store.on('change', callback),
     findByMonth
   };

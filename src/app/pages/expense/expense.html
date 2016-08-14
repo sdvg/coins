@@ -54,5 +54,11 @@
         </fieldset>
 
         <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+
+      <div class="button-remove-wrap" ng-show="!expense.isNew">
+        <button type="button" class="btn btn-outline-danger btn-sm" ng-click="expense.remove(expense.expense)">
+          Remove expense
+        </button>
+      </div>
     </form>
 </div>
