@@ -28,6 +28,11 @@
                         {{ expense.date | date: 'yyyy-MM-dd' }}
                     </a>
                 </td>
+                <td>
+                  <a ui-sref="editExpense({id: expense.id})">
+                    {{ expense.tagData.name }}
+                  </a>
+                </td>
                 <td class="text-xs-right">
                     <a ui-sref="editExpense({id: expense.id})">
                         {{ expense.amount | number: 2 }}

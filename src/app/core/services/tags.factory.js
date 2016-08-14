@@ -5,16 +5,19 @@ function tagsFactory ($q, hoodie) {
 
     return {
         add: function () {
-            return $q.when(store.add.apply(store, arguments));
+          return $q.when(store.add.apply(store, arguments));
         },
         update: function () {
-            return $q.when(store.update.apply(store, arguments));
+          return $q.when(store.update.apply(store, arguments));
         },
         findAll: function () {
-            return $q.when(store.findAll.apply(store, arguments));
+          return $q.when(store.findAll.apply(store, arguments));
+        },
+        find: function () {
+          return $q.when(store.find.apply(store, arguments));
         },
         remove: function () {
-            return $q.when(store.remove.apply(store, arguments));
+          return $q.when(store.remove.apply(store, arguments));
         }
     };
 }

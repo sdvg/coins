@@ -1,4 +1,4 @@
-function expensesFactory($q, hoodie) {
+function expensesFactory($q, hoodie, tags) {
   'ngInject';
 
   const store = hoodie.store('expense');
@@ -16,14 +16,22 @@ function expensesFactory($q, hoodie) {
     const year = date.getYear();
     const month = date.getMonth();
 
-    const promise = store.findAll().then((data) =>
-      data.filter(expense => {
-        const expenseDate = new Date(expense.date);
-        return expenseDate.getYear() === year && expenseDate.getMonth() === month;
-      })
-    );
+    const promise = store.findAll().then((data) => {
+      return data
+        .filter(expense => {
+          const expenseDate = new Date(expense.date);
+          return expenseDate.getYear() === year && expenseDate.getMonth() === month;
+        })
 
-    return $q.when(promise);
+        .map(expense => {
+          return tags.find(expense.tag).then(tag => {
+            expense.tagData = tag;
+            return expense;
+          });
+        })
+    });
+
+    return $q.when(promise).then(promises => $q.all(promises));
   }
 }
 
