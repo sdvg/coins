@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<main class="page-tags">
+<main class="page-tags container">
     <table class="tags-list table table-striped" id="tags-list">
         <tbody>
             <tr ng-repeat="tag in tags.tags track by $index">
@@ -17,7 +17,5 @@
         </tbody>
     </table>
 
-    <div class="container">
-        <button class="btn btn-primary btn-lg btn-block" ng-click="tags.addTag()" type="button">Add Tag</button>
-    </div>
+      <button class="btn btn-primary btn-lg btn-block" ng-click="tags.addTag()" type="button">Add Tag</button>
 </main>

@@ -1,23 +1,39 @@
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
 .page-overview {
-    .current {
-        line-height: 30px;
+  .current {
+    line-height: 30px;
+  }
+
+  .table-container {
+    @media (min-width: 768px) {
+      @include make-container();
+      @include make-container-max-widths();
+    }
+  }
+
+  .table {
+    margin-top: 1rem;
+
+    td {
+      padding: 0;
     }
 
-    .table {
-        margin-top: 1rem;
-
-        td {
-            padding: 0;
-        }
-
-        a {
-            display: block;
-            padding: 0.75rem;
-            color: #373a3c;
-
-            &:hover {
-                text-decoration: none;
-            }
-        }
+    .col-date,
+    .col-amount {
+      width: 1px;
+      white-space: nowrap;
     }
+
+    a {
+      display: block;
+      padding: 0.75rem;
+      color: #373a3c;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }
