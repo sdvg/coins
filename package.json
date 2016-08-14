@@ -10,9 +10,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
-    "build": "cross-env NODE_ENV=production webpack -p --colors",
-    "hoodie": "hoodie"
+    "hoodie": "hoodie",
+    "dev-server": "cross-env NODE_ENV=development webpack-dev-server",
+    "dev": "concurrently 'hoodie' 'npm run dev-server'",
+    "build": "cross-env NODE_ENV=production webpack -p --colors"
   },
   "dependencies": {
     "angular": "^1.5.8",
