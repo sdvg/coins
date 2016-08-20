@@ -24,7 +24,7 @@ function ExpenseController($scope, $state, $stateParams, expenses, tags) {
     };
   }
 
-  tags.findAll().then((allTags) => {
+  tags.getSorted().then((allTags) => {
     this.availableTags = allTags;
   });
 

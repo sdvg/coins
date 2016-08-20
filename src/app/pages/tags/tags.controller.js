@@ -3,7 +3,7 @@
 function TagsController($timeout, tags) {
   'ngInject';
 
-  tags.findAll().then((allTags) => {
+  tags.getSorted().then((allTags) => {
     this.tags = allTags;
   });
 
