@@ -143,7 +143,9 @@ module.exports = function (_path) {
       }),
 
       new AppCachePlugin({
-        network: ['http://localhost:8080/sockjs-node'],
+        network: [
+          '*'
+        ],
         fallback: ['/ /'],
         output: 'cache.manifest'
       }),
