@@ -144,7 +144,7 @@ module.exports = function (_path) {
 
       new AppCachePlugin({
         network: [
-          '*'
+          '/hoodie'
         ],
         fallback: ['/ /'],
         output: 'cache.manifest'
