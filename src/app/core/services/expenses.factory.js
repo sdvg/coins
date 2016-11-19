@@ -10,6 +10,7 @@ function expensesFactory($q, hoodie, tags) {
     find: store.find.bind(store),
     remove: store.remove.bind(store),
     onUpdate: callback => store.on('change', callback),
+    unsubscribeUpdate: callback => store.off('change', callback),
     findByMonth
   };
 

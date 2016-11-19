@@ -1,7 +1,7 @@
 import {orderBy, groupBy} from 'lodash';
 import {toWordsOrdinal} from 'number-to-words';
 
-function OverviewController($stateParams, $filter, expenses) {
+function OverviewController($scope, $stateParams, $filter, expenses) {
   'ngInject';
 
   this.currentMonth = new Date($stateParams.year, $stateParams.month - 1);
@@ -42,6 +42,10 @@ function OverviewController($stateParams, $filter, expenses) {
 
   fetchExpenses();
   expenses.onUpdate(fetchExpenses);
+
+  $scope.$on('$destroy', () => {
+    expenses.unsubscribeUpdate(fetchExpenses);
+  });
 
   this.numberToWordsOrdinal = timestamp => {
     return toWordsOrdinal(new Date(parseInt(timestamp)).getDate());
