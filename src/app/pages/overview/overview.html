@@ -20,10 +20,18 @@
     </div>
   </div>
 
-  <div class="table-container">
-    <table class="table table-striped" ng-show="overview.expenses.length">
+  <div
+    class="table-container"
+    ng-show="overview.expensesByDay"
+    ng-repeat="(day, expenses) in overview.expensesByDay"
+  >
+    <h3 class="table-subheadline">
+      {{ day | date: 'EEEE, MMMM' }} the {{ overview.numberToWordsOrdinal(day) | capitalize }}
+    </h3>
+
+    <table class="table table-striped">
       <tbody>
-      <tr ng-repeat="expense in overview.expenses | orderBy: '-date'">
+      <tr ng-repeat="expense in expenses">
         <td class="col-date">
           <a ui-sref="editExpense({id: expense.id})">
             {{ expense.date | date: 'yyyy-MM-dd' }}

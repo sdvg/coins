@@ -8,6 +8,7 @@ const App = angular.module(
     // plugins
     require('angular-ui-router'),
     require('angular-validation-match'),
+    require('angular-eha.capitalize').name,
 
     // core
     require("./core/core.module").name,
