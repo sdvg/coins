@@ -1,23 +1,38 @@
 import {orderBy, groupBy} from 'lodash';
 import {toWordsOrdinal} from 'number-to-words';
 
-function OverviewController(expenses) {
+function OverviewController($stateParams, $filter, expenses) {
   'ngInject';
 
-  let currentDate = new Date();
+  this.currentMonth = new Date($stateParams.year, $stateParams.month - 1);
+
+  const previousMonth = new Date(this.currentMonth);
+  previousMonth.setMonth(this.currentMonth.getMonth() - 1);
+  this.previousMonthLinkParams = {
+    year: $filter('date')(previousMonth, 'yyyy'),
+    month: $filter('date')(previousMonth, 'MM')
+  };
+
+  const nextMonth = new Date(this.currentMonth);
+  nextMonth.setMonth(this.currentMonth.getMonth() + 1);
+  this.nextMonthLinkParams = {
+    year: $filter('date')(nextMonth, 'yyyy'),
+    month: $filter('date')(nextMonth, 'MM')
+  };
+
   this.monthExpenses = null;
   this.expensesByDay = null;
 
-  const getCurrentMonth = () => {
-    this.currentDate = currentDate;
+  const fetchExpenses = () => {
+    expenses.findByMonth(this.currentMonth).then(expenses => {
+      if(expenses.length) {
+        const orderedExpenses = orderBy(expenses, 'date', 'desc');
 
-    expenses.findByMonth(currentDate).then(expenses => {
-      const orderedExpenses = orderBy(expenses, 'date', 'desc');
-
-      this.expensesByDay = groupBy(orderedExpenses, expense => {
-        const date = new Date(expense.date);
-        return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
-      });
+        this.expensesByDay = groupBy(orderedExpenses, expense => {
+          const date = new Date(expense.date);
+          return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+        });
+      }
 
       this.monthExpenses = expenses
           .map(val => val.amount)
@@ -25,17 +40,8 @@ function OverviewController(expenses) {
     });
   };
 
-  getCurrentMonth();
-  expenses.onUpdate(getCurrentMonth);
-
-  this.goPrev = () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    getCurrentMonth();
-  };
-  this.goNext = () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    getCurrentMonth();
-  };
+  fetchExpenses();
+  expenses.onUpdate(fetchExpenses);
 
   this.numberToWordsOrdinal = timestamp => {
     return toWordsOrdinal(new Date(parseInt(timestamp)).getDate());

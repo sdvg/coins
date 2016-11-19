@@ -4,25 +4,37 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-3">
-        <button class="btn btn-primary btn-sm" ng-click="overview.goPrev()" type="button">←</button>
+        <a
+          class="btn btn-primary btn-sm"
+          ui-sref="overviewMonth({
+            year: overview.previousMonthLinkParams.year,
+            month: overview.previousMonthLinkParams.month
+          })"
+        >←</a>
       </div>
 
       <div class="col-xs-6 text-xs-center">
         <p class="current">
-          {{ overview.currentDate | date: 'MMMM yyyy' }}:
+          {{ overview.currentMonth | date: 'MMMM yyyy' }}:
           <strong>{{ overview.monthExpenses | number: 2 }}</strong>
         </p>
       </div>
 
       <div class="col-xs-3 text-xs-right">
-        <button class="btn btn-primary btn-sm" ng-click="overview.goNext()" type="button">→</button>
+        <a
+          class="btn btn-primary btn-sm"
+          ui-sref="overviewMonth({
+            year: overview.nextMonthLinkParams.year,
+            month: overview.nextMonthLinkParams.month
+          })"
+        >→</a>
       </div>
     </div>
   </div>
 
   <div
     class="table-container"
-    ng-show="overview.expensesByDay"
+    ng-if="overview.expensesByDay"
     ng-repeat="(day, expenses) in overview.expensesByDay"
   >
     <h3 class="table-subheadline">
@@ -52,8 +64,8 @@
     </table>
   </div>
 
-  <div class="container" ng-hide="!overview.expenses || overview.expenses.length">
-    <p>No expenses in {{ overview.currentDate | date: 'MMMM' }} yet.</p>
+  <div class="container" ng-if="!overview.expensesByDay">
+    <p>No expenses in {{ overview.currentMonth | date: 'MMMM' }} yet.</p>
   </div>
 
   <div class="container">
