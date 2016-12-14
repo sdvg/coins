@@ -13,7 +13,8 @@
     "hoodie": "hoodie",
     "dev-server": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0",
     "dev": "concurrently 'hoodie' 'npm run dev-server'",
-    "build": "cross-env NODE_ENV=production webpack -p --colors"
+    "build": "cross-env NODE_ENV=production webpack -p --colors",
+    "lint": "xo --space"
   },
   "dependencies": {
     "angular": "^1.6.0",
