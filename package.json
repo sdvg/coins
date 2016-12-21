@@ -14,7 +14,24 @@
     "dev-server": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0",
     "dev": "concurrently 'hoodie' 'npm run dev-server'",
     "build": "cross-env NODE_ENV=production webpack -p --colors",
-    "lint": "xo --space"
+    "lint": "xo 'src/**/*.js'",
+    "start": "hoodie"
+  },
+  "xo": {
+    "space": true,
+    "esnext": true,
+    "envs": [
+      "browser"
+    ],
+    "globals": [
+      "NODE_ENV",
+      "angular"
+    ],
+    "rules": {
+      "import/no-unassigned-import": "off",
+      "max-params": "off",
+      "no-alert": "off"
+    }
   },
   "dependencies": {
     "angular": "^1.6.0",
@@ -24,8 +41,8 @@
     "appcache-webpack-plugin": "^1.3.0",
     "assets-webpack-plugin": "^3.5.0",
     "autoprefixer-core": "^6.0.1",
-    "babel-core": "^6.20.0",
-    "babel-loader": "^6.2.9",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-polyfill": "^6.20.0",
@@ -51,9 +68,10 @@
     "lodash": "~4.17.2",
     "ng-annotate-loader": "0.2.0",
     "ngtemplate-loader": "^1.3.1",
-    "node-sass": "^4.0.0",
+    "node-sass": "^4.1.0",
     "number-to-words": "^1.2.3",
     "postcss-loader": "^1.2.1",
+    "pouchdb-browser": "^6.1.0",
     "sass-loader": "^4.1.0",
     "style-loader": "^0.13.1",
     "url": "^0.11.0",

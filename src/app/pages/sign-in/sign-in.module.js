@@ -1,5 +1,5 @@
-import route from './signIn.route';
-import './signIn.scss';
+import route from './sign-in.route';
+import './sign-in.scss';
 
 const signInPageModule = angular.module('signIn-module', [
   'ui.router'

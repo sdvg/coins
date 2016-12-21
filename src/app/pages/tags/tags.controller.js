@@ -1,44 +1,42 @@
-'use strict';
-
 function TagsController($timeout, tags) {
   'ngInject';
 
-  tags.getSorted().then((allTags) => {
+  tags.getSorted().then(allTags => {
     this.tags = allTags;
   });
 
-  this.saveTag = (tag) => {
+  this.saveTag = tag => {
     if (tag.id) {
       tags.update(tag).then(
-          (doc) => {
+          doc => {
             const tagIdx = this.tags.findIndex(_tag => _tag.id === tag.id);
             this.tags[tagIdx] = doc;
           },
-          (err) => { throw err; }
+          err => {
+            throw err;
+          }
       );
-    }
-    else {
+    } else {
       tags.add(tag);
     }
   };
 
-  this.removeTag = (tag) => {
-      const tagIdx = this.tags.findIndex(_tag => _tag.id === tag.id);
+  this.removeTag = tag => {
+    const tagIdx = this.tags.findIndex(_tag => _tag.id === tag.id);
 
-    if(!tag.id) { //not saved yet
-      this.tags.splice(tagIdx, 1);
-    }
-    else {
+    if (tag.id) {
       tags.remove(tag).then(() => {
         this.tags.splice(tagIdx, 1);
       });
+    } else { // not saved yet
+      this.tags.splice(tagIdx, 1);
     }
   };
 
   this.addTag = () => {
     this.tags.push({name: ''});
 
-    //focus new input
+    // focus new input
     $timeout(() => {
       const inputs = document.querySelectorAll('#tags-list input');
       const inputsArray = Array.from(inputs);

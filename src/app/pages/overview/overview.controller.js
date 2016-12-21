@@ -25,7 +25,7 @@ function OverviewController($scope, $stateParams, $filter, expenses) {
 
   const fetchExpenses = () => {
     expenses.findByMonth(this.currentMonth).then(expenses => {
-      if(expenses.length) {
+      if (expenses.length > 0) {
         const orderedExpenses = orderBy(expenses, 'date', 'desc');
 
         this.expensesByDay = groupBy(orderedExpenses, expense => {
@@ -48,7 +48,7 @@ function OverviewController($scope, $stateParams, $filter, expenses) {
   });
 
   this.numberToWordsOrdinal = timestamp => {
-    return toWordsOrdinal(new Date(parseInt(timestamp)).getDate());
+    return toWordsOrdinal(new Date(parseInt(timestamp, 10)).getDate());
   };
 }
 

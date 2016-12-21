@@ -1,14 +1,12 @@
-'use strict';
-
-function SignInController($scope, $state, account) {
+function SignInController($state, account) {
   'ngInject';
 
-  if(account.isSignedIn()) {
+  if (account.isSignedIn()) {
     $state.go('start');
     return;
   }
 
-  this.submit = (user) => {
+  this.submit = user => {
     const credentials = {
       username: user.email,
       password: user.password
@@ -16,18 +14,18 @@ function SignInController($scope, $state, account) {
 
     account.signIn(credentials).then(
         () => {
-          //workaround for https://github.com/hoodiehq/hoodie/issues/503
-          location.href = $state.href('overview')
+          // workaround for https://github.com/hoodiehq/hoodie/issues/503
+          location.href = $state.href('overview');
         },
 
-        (error) => {
+        error => {
           this.errorMessage = {
             ConnectionError: 'Could not connect to server.',
             UnauthorizedError: 'Invalid credentials.'
           }[error.name] || `Login failed. Reason: ${error.message}`;
         }
     );
-  }
+  };
 }
 
 export default SignInController;

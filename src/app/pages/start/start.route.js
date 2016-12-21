@@ -1,5 +1,3 @@
-'use strict';
-
 import startTpl from './start.html';
 
 function routeConfig($stateProvider) {
@@ -14,7 +12,6 @@ function routeConfig($stateProvider) {
       bindToController: true,
       scope: {}
     });
-
 }
 
 export default routeConfig;

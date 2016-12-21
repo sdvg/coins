@@ -1,9 +1,7 @@
-'use strict';
-
 function StartController($state, account) {
   'ngInject';
 
-  if(account.isSignedIn()) {
+  if (account.isSignedIn()) {
     $state.go('overview');
   }
 }

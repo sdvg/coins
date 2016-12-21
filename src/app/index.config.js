@@ -1,5 +1,3 @@
-'use strict';
-
 function config($compileProvider, $logProvider) {
   'ngInject';
 

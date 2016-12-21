@@ -1,17 +1,19 @@
 import Hoodie from '@hoodie/client';
+import PouchDB from 'pouchdb-browser';
 
-function hoodieFactory (appConfig) {
+function hoodieFactory(appConfig) {
   'ngInject';
 
   const hoodie = new Hoodie({
-        url: appConfig.hoodieUrl
-    });
+    url: appConfig.hoodieUrl,
+    PouchDB
+  });
 
-    window.hoodie = hoodie;
+  window.hoodie = hoodie;
 
-    return hoodie;
+  return hoodie;
 }
 
 export default function (app) {
-    app.factory('hoodie', hoodieFactory);
+  app.factory('hoodie', hoodieFactory);
 }

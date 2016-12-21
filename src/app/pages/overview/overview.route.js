@@ -12,7 +12,7 @@ function routeConfig($stateProvider) {
         $state.go('overviewMonth', {
           year: $filter('date')(currentDate, 'yyyy'),
           month: $filter('date')(currentDate, 'MM')
-        })
+        });
       }
     })
     .state('overviewMonth', {
@@ -21,7 +21,6 @@ function routeConfig($stateProvider) {
       controller: require('./overview.controller'),
       controllerAs: 'overview'
     });
-
 }
 
 export default routeConfig;

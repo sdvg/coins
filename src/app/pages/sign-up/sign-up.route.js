@@ -1,6 +1,4 @@
-'use strict';
-
-import signUpTpl from './signUp.html';
+import signUpTpl from './sign-up.html';
 
 function routeConfig($stateProvider) {
   'ngInject';
@@ -9,10 +7,9 @@ function routeConfig($stateProvider) {
     .state('signUp', {
       url: '/signUp',
       templateUrl: signUpTpl,
-      controller: require('./signUp.controller'),
+      controller: require('./sign-up.controller'),
       controllerAs: 'signUp'
     });
-
 }
 
 export default routeConfig;

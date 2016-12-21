@@ -1,5 +1,3 @@
-'use strict';
-
 import route from './tags.route';
 import './tags.scss';
 

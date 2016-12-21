@@ -4,13 +4,13 @@ function accountFactory($q, hoodie) {
   const account = hoodie.account;
 
   return {
-    signUp: function () {
+    signUp() {
       return $q.when(account.signUp.apply(account, arguments));
     },
-    signIn: function () {
+    signIn() {
       return $q.when(account.signIn.apply(account, arguments));
     },
-    isSignedIn: function () {
+    isSignedIn() {
       return hoodie.account.isSignedIn();
     }
   };

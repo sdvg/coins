@@ -1,5 +1,3 @@
-'use strict';
-
 const shared = angular.module('core.shared', []);
 
 require('./services/hoodie.factory')(shared);

@@ -18,7 +18,7 @@ function expensesFactory($q, hoodie, tags) {
     const year = date.getYear();
     const month = date.getMonth();
 
-    const promise = store.findAll().then((data) => {
+    const promise = store.findAll().then(data => {
       return data
         .filter(expense => {
           const expenseDate = new Date(expense.date);
@@ -30,7 +30,7 @@ function expensesFactory($q, hoodie, tags) {
             expense.tagData = tag;
             return expense;
           });
-        })
+        });
     });
 
     return $q.when(promise).then(promises => $q.all(promises));

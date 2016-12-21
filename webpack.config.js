@@ -1,20 +1,16 @@
-'use strict';
+const _ = require('lodash');
 
-var _ = require('lodash');
-var _configs = {
-
+const _configs = {
   // global section
-  global: require(__dirname + '/config/webpack/global'),
+  global: require(`${__dirname}/config/webpack/global`),
 
   // config by enviroments
-  production: require(__dirname + '/config/webpack/environments/production'),
-  development: require(__dirname + '/config/webpack/environments/development')
+  production: require(`${__dirname}/config/webpack/environments/production`),
+  development: require(`${__dirname}/config/webpack/environments/development`)
 };
 
-var _load = function() {
-  var ENV = process.env.NODE_ENV
-    ? process.env.NODE_ENV
-    : 'production';
+const _load = () => {
+  const ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'production';
 
   console.log('Current Environment: ', ENV);
 

@@ -1,5 +1,5 @@
 function tagsFactory($q, hoodie) {
-  'ngInject'
+  'ngInject';
 
   const store = hoodie.store('tag');
 
@@ -8,11 +8,11 @@ function tagsFactory($q, hoodie) {
 
     return $q.all([store.findAll(), expensesStore.findAll()]).then(([tags, expenses]) => {
       const tagIds = {};
-      for (let tag of tags) {
+      for (const tag of tags) {
         tagIds[tag.id] = 0;
       }
 
-      for (let expense of expenses) {
+      for (const expense of expenses) {
         tagIds[expense.tag] += 1;
       }
 
@@ -21,29 +21,29 @@ function tagsFactory($q, hoodie) {
   };
 
   return {
-    add: function () {
+    add() {
       return $q.when(store.add.apply(store, arguments));
     },
-    update: function () {
+    update() {
       return $q.when(store.update.apply(store, arguments));
     },
-    findAll: function () {
+    findAll() {
       return $q.when(store.findAll.apply(store, arguments));
     },
-    find: function () {
+    find() {
       return $q.when(store.find.apply(store, arguments));
     },
-    remove: function () {
+    remove() {
       return $q.when(store.remove.apply(store, arguments));
     },
-    getSorted: function () {
+    getSorted() {
       const promise = store.findAll.apply(store, arguments).then(tags => {
         return getWeightedTagIds().then(weightedTags => {
           return tags
-            .sort((a, b) => { //first sort by name
+            .sort((a, b) => { // first sort by name
               return a.name < b.name ? -1 : 1;
             })
-            .sort((a, b) => { //then by number of expenses
+            .sort((a, b) => { // then by number of expenses
               return weightedTags[b.id] - weightedTags[a.id];
             });
         });

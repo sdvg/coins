@@ -1,5 +1,3 @@
-'use strict';
-
 import tagsTpl from './tags.html';
 
 function routeConfig($stateProvider) {
@@ -12,7 +10,6 @@ function routeConfig($stateProvider) {
       controller: require('./tags.controller'),
       controllerAs: 'tags'
     });
-
 }
 
 export default routeConfig;

@@ -1,15 +1,11 @@
-'use strict';
-
 // index.html page to dist folder
 import '!!file-loader?name=[name].[ext]';
 
 // main App module
-import "./index.module";
+import './index.module';
 
-import "../assets/styles/sass/index.scss";
+import '../assets/styles/sass/index.scss';
 
-angular.element(document).ready(function () {
-  angular.bootstrap(document, ['expenses'], {
-    strictDi: true
-  });
+angular.element(document).ready(() => {
+  angular.bootstrap(document, ['expenses'], {strictDi: true});
 });

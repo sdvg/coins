@@ -1,5 +1,3 @@
-'use strict';
-
 import route from './start.route';
 import './start.scss';
 
