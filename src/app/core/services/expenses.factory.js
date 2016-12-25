@@ -26,10 +26,14 @@ function expensesFactory($q, hoodie, tags) {
         })
 
         .map(expense => {
-          return tags.find(expense.tag).then(tag => {
-            expense.tagData = tag;
-            return expense;
-          });
+          return tags.find(expense.tag).then(
+            tag => {
+              expense.tagData = tag;
+              return expense;
+            },
+            err => {
+              console.error('Tag for expense not found.', err);
+            });
         });
     });
 
