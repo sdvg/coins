@@ -22,6 +22,7 @@ export default angular.module('expenses',
     require('./pages/overview/overview.module').name,
     require('./pages/expense/expense.module').name,
     require('./pages/tags/tags.module').name,
+    require('./pages/export-import/export-import.module').name,
     require('./pages/sign-up/sign-up.module').name,
     require('./pages/sign-in/sign-in.module').name
   ]
