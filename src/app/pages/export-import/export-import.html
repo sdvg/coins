@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="page-export-import container">
-  <h2>Export</h2>
+  <h2 class="title-export">Export</h2>
 
   <p ng-if="exportImportCtrl.areStatNumbersReady()">
     You have {{ exportImportCtrl.getExpensesCount() }} expenses
@@ -15,12 +15,21 @@
     Export as JSON
   </button>
 
-  <h2 class="import-title">Import</h2>
+  <h2 class="title-import">Import</h2>
 
   <button
     class="btn btn-primary btn-xl btn-block"
   >
     Import
     <small>JSON / CSV</small>
+  </button>
+
+  <h2 class="title-erase">Erase data</h2>
+
+  <button
+    class="btn btn-danger btn-xl btn-block"
+    ng-click="exportImportCtrl.eraseData()"
+  >
+    Erase all tags and expenses
   </button>
 </div>

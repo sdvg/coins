@@ -3,7 +3,7 @@ function HeaderController() {
 
   this.toggleMenu = () => {
     this.isMenuExpanded = !this.isMenuExpanded;
-  }
+  };
 }
 
 export default HeaderController;

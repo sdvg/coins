@@ -30,6 +30,20 @@ function ExportImportController(hoodie, expenses, tags) {
       );
     });
   };
+
+  this.eraseData = () => {
+    if (confirm('Are you sure that you want to delete all tags and expenses?')) {
+      hoodie.store.removeAll().then(
+        () => {
+          alert('Erased all data.');
+        },
+        error => {
+          console.error(error);
+          alert('Error while erasing data.');
+        }
+      );
+    }
+  };
 }
 
 export default ExportImportController;
