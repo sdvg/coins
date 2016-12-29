@@ -20,6 +20,10 @@ function tagsFactory($q, hoodie) {
     });
   };
 
+  const getCount = () => {
+    return store.findAll().then(tags => tags.length);
+  };
+
   return {
     add() {
       return $q.when(store.add.apply(store, arguments));
@@ -50,7 +54,8 @@ function tagsFactory($q, hoodie) {
       });
 
       return $q.when(promise);
-    }
+    },
+    getCount
   };
 }
 

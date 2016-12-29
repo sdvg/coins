@@ -11,6 +11,7 @@ function expensesFactory($q, hoodie, tags) {
     remove: store.remove.bind(store),
     onUpdate: callback => store.on('change', callback),
     unsubscribeUpdate: callback => store.off('change', callback),
+    getCount,
     findByMonth
   };
 
@@ -38,6 +39,11 @@ function expensesFactory($q, hoodie, tags) {
     });
 
     return $q.when(promise).then(promises => $q.all(promises));
+  }
+
+  function getCount() {
+    const promise = store.findAll().then(expenses => expenses.length);
+    return $q.when(promise);
   }
 }
 

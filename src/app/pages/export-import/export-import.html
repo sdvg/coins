@@ -1,5 +1,26 @@
 <app-header></app-header>
 
 <div class="page-export-import container">
-  export-import
+  <h2>Export</h2>
+
+  <p ng-if="exportImportCtrl.areStatNumbersReady()">
+    You have {{ exportImportCtrl.getExpensesCount() }} expenses
+    in {{ exportImportCtrl.getTagsCount() }} tags.
+  </p>
+
+  <button
+    class="btn btn-primary btn-xl btn-block"
+    ng-click="exportImportCtrl.exportJson()"
+  >
+    Export as JSON
+  </button>
+
+  <h2 class="import-title">Import</h2>
+
+  <button
+    class="btn btn-primary btn-xl btn-block"
+  >
+    Import
+    <small>JSON / CSV</small>
+  </button>
 </div>
