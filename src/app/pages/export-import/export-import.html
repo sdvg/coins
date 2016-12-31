@@ -17,12 +17,20 @@
 
   <h2 class="title-import">Import</h2>
 
-  <button
+  <input
+    type="file"
+    id="export-import-import-json-input"
+    class="import-json-input"
+    link-element="exportImportCtrl.importJsonInput"
+  >
+
+  <label
     class="btn btn-primary btn-xl btn-block"
+    for="export-import-import-json-input"
   >
     Import
     <small>JSON / CSV</small>
-  </button>
+  </label>
 
   <h2 class="title-erase">Erase data</h2>
 
@@ -32,4 +40,5 @@
   >
     Erase all tags and expenses
   </button>
+
 </div>

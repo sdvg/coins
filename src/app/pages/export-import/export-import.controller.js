@@ -1,8 +1,12 @@
 import download from 'in-browser-download';
 import moment from 'moment';
+import { omit } from 'lodash';
 
-function ExportImportController(hoodie, expenses, tags) {
+function ExportImportController($timeout, hoodie, expenses, tags) {
   'ngInject';
+
+  /** placeholder for <input> $element */
+  this.importJsonInput = null;
 
   const statNumbers = {
     tags: null,
@@ -44,6 +48,27 @@ function ExportImportController(hoodie, expenses, tags) {
       );
     }
   };
+
+  $timeout(() => {
+    this.importJsonInput.on('change', changeEvent => {
+      const file = changeEvent.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = readerEvent => {
+        // todo: keep ids
+        // todo: error handling
+        // todo: prevent duplicates
+        const importData = JSON.parse(readerEvent.target.result);
+        console.log('import', importData);
+
+        importData.forEach(item => {
+          // hoodie.store.add(omit(item, ['id', '_rev']));
+        });
+      };
+
+      reader.readAsText(file);
+    });
+  });
 }
 
 export default ExportImportController;
