@@ -2,7 +2,7 @@ import download from 'in-browser-download';
 import moment from 'moment';
 import { omit } from 'lodash';
 
-function ExportImportController($timeout, hoodie, expenses, tags) {
+function DataController($timeout, hoodie, expenses, tags) {
   'ngInject';
 
   /** placeholder for <input> $element */
@@ -71,4 +71,4 @@ function ExportImportController($timeout, hoodie, expenses, tags) {
   });
 }
 
-export default ExportImportController;
+export default DataController;

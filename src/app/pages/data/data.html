@@ -1,16 +1,16 @@
 <app-header></app-header>
 
-<div class="page-export-import container">
+<div class="page-data container">
   <h2 class="title-export">Export</h2>
 
-  <p ng-if="exportImportCtrl.areStatNumbersReady()">
-    You have {{ exportImportCtrl.getExpensesCount() }} expenses
-    in {{ exportImportCtrl.getTagsCount() }} tags.
+  <p ng-if="dataCtrl.areStatNumbersReady()">
+    You have {{ dataCtrl.getExpensesCount() }} expenses
+    in {{ dataCtrl.getTagsCount() }} tags.
   </p>
 
   <button
     class="btn btn-primary btn-xl btn-block"
-    ng-click="exportImportCtrl.exportJson()"
+    ng-click="dataCtrl.exportJson()"
   >
     Export as JSON
   </button>
@@ -19,14 +19,14 @@
 
   <input
     type="file"
-    id="export-import-import-json-input"
+    id="data-import-json-input"
     class="import-json-input"
-    link-element="exportImportCtrl.importJsonInput"
+    link-element="dataCtrl.importJsonInput"
   >
 
   <label
     class="btn btn-primary btn-xl btn-block"
-    for="export-import-import-json-input"
+    for="data-import-json-input"
   >
     Import
     <small>JSON / CSV</small>
@@ -36,9 +36,8 @@
 
   <button
     class="btn btn-danger btn-xl btn-block"
-    ng-click="exportImportCtrl.eraseData()"
+    ng-click="dataCtrl.eraseData()"
   >
     Erase all tags and expenses
   </button>
-
 </div>
