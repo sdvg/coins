@@ -10,22 +10,18 @@ export default angular.module('expenses',
 
     // core
     require('./core/core.module').name,
-    require('./core/directives/linkElement/link-element.directive').name,
 
     // components
+    require('./components/views/start/start').name,
+    require('./components/views/sign-up/sign-up').name,
+    require('./components/views/sign-in/sign-in').name,
+    require('./components/views/overview/overview').name,
+    require('./components/views/expense/expense').name,
+    require('./components/views/tags/tags').name,
     require('./components/header/header').name,
 
     // routes
     require('./index.routes').name,
-
-    // pages
-    require('./pages/start/start.module').name,
-    require('./pages/overview/overview.module').name,
-    require('./pages/expense/expense.module').name,
-    require('./pages/tags/tags.module').name,
-    require('./pages/data/data.module').name,
-    require('./pages/sign-up/sign-up.module').name,
-    require('./pages/sign-in/sign-in.module').name
   ]
 )
   .config(config)

@@ -1,6 +1,5 @@
 function accountFactory($q, hoodie) {
   'ngInject';
-
   const account = hoodie.account;
 
   return {

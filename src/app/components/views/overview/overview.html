@@ -7,16 +7,16 @@
         <a
           class="btn btn-primary btn-sm"
           ui-sref="overviewMonth({
-            year: overview.previousMonthLinkParams.year,
-            month: overview.previousMonthLinkParams.month
+            year: $ctrl.previousMonthLinkParams.year,
+            month: $ctrl.previousMonthLinkParams.month
           })"
         >←</a>
       </div>
 
       <div class="col-xs-6 text-xs-center">
         <p class="current">
-          {{ overview.currentMonth | date: 'MMMM yyyy' }}:
-          <strong>{{ overview.monthExpenses | number: 2 }}</strong>
+          {{ $ctrl.currentMonth | date: 'MMMM yyyy' }}:
+          <strong>{{ $ctrl.monthExpenses | number: 2 }}</strong>
         </p>
       </div>
 
@@ -24,8 +24,8 @@
         <a
           class="btn btn-primary btn-sm"
           ui-sref="overviewMonth({
-            year: overview.nextMonthLinkParams.year,
-            month: overview.nextMonthLinkParams.month
+            year: $ctrl.nextMonthLinkParams.year,
+            month: $ctrl.nextMonthLinkParams.month
           })"
         >→</a>
       </div>
@@ -34,11 +34,11 @@
 
   <div
     class="table-container"
-    ng-if="overview.expensesByDay"
-    ng-repeat="(day, expenses) in overview.expensesByDay"
+    ng-if="$ctrl.expensesByDay"
+    ng-repeat="(day, expenses) in $ctrl.expensesByDay"
   >
     <h3 class="table-subheadline">
-      {{ day | date: 'EEEE, MMMM' }} the {{ overview.numberToWordsOrdinal(day) | capitalize }}
+      {{ day | date: 'EEEE, MMMM' }} the {{ $ctrl.numberToWordsOrdinal(day) | capitalize }}
     </h3>
 
     <table class="table table-striped">
@@ -64,8 +64,8 @@
     </table>
   </div>
 
-  <div class="container" ng-if="!overview.expensesByDay">
-    <p>No expenses in {{ overview.currentMonth | date: 'MMMM' }} yet.</p>
+  <div class="container" ng-if="!$ctrl.expensesByDay">
+    <p>No expenses in {{ $ctrl.currentMonth | date: 'MMMM' }} yet.</p>
   </div>
 
   <div class="container">

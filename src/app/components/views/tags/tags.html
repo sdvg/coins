@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<main class="page-tags container">
+  <table
+    class="tags-list table table-striped"
+    id="tags-list"
+  >
+    <tbody>
+      <tr ng-repeat="tag in $ctrl.tags track by $index">
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            ng-model="tag.name"
+            ng-change="$ctrl.saveTag(tag)"
+          >
+        </td>
+        <td class="remove-col">
+          <button
+            class="btn btn-danger btn-sm"
+            type="button"
+            ng-click="$ctrl.removeTag(tag)"
+          >
+            ×
+            <span class="sr-only">Remove</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button
+    class="btn btn-primary btn-lg btn-block"
+    ng-click="$ctrl.addTag()"
+    type="button"
+  >
+    Add Tag
+  </button>
+</main>
