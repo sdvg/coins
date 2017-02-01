@@ -1,3 +1,5 @@
+/** @todo Properly update Bootstrap and remove hacks */
+
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../../node_modules/bootstrap/scss/mixins";
 
@@ -9,5 +11,23 @@
 
   .navbar-toggleable-xs {
     clear: right;
+  }
+
+  @media (max-width: 544px) {
+    .navbar-toggleable-xs .nav-item {
+      width: 100%;
+      margin-left: 0 !important;
+    }
+  }
+
+  .toggle-navbar {
+    width: 36px;
+    height: 28px;
+    background: transparent;
+    border: 0;
+    fill: white;
+    position: relative;
+    float: right;
+    margin-top: 5px;
   }
 }

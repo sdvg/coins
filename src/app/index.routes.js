@@ -38,6 +38,10 @@ export default angular
         url: '/tags/',
         template: '<tags></tags>'
       })
+      .state('data', {
+        url: '/data/',
+        template: '<data></data>'
+      })
       .state('signUp', {
         url: '/signUp',
         template: '<sign-up></sign-up>'

@@ -18,6 +18,7 @@ export default angular.module('expenses',
     require('./components/views/overview/overview').name,
     require('./components/views/expense/expense').name,
     require('./components/views/tags/tags').name,
+    require('./components/views/data/data').name,
     require('./components/header/header').name,
 
     // routes

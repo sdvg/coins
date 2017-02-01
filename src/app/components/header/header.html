@@ -58,13 +58,15 @@
     </ul>
 
     <button
-      class="navbar-toggler float-xs-right hidden-sm-up"
+      class="toggle-navbar hidden-sm-up"
       type="button"
       aria-controls="header-collapsing-navbar-controls"
       aria-expanded="{{ headerCtrl.isMenuExpanded ? 'true' : 'false' }}"
       aria-label="Toggle navigation"
       ng-click="headerCtrl.toggleMenu()"
-    ></button>
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect y="2" width="16" height="1"/><rect y="7" width="16" height="1"/><rect y="12" width="16" height="1"/></svg>
+    </button>
 
     <div
       id="header-collapsing-navbar-controls"
