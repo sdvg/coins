@@ -2,9 +2,14 @@ export default angular.module('linkElement', [])
   .directive('linkElement', () => ({
     restrict: 'A',
     scope: {
-      linkElement: '='
+      linkElement: '&'
     },
-    link: (scope, element) => {
-      scope.linkElement = element;
+    bindToController: true,
+    controller: function ($element) {
+      'ngInject';
+
+      this.$onInit = () => {
+        this.linkElement({ $element });
+      };
     }
   }));

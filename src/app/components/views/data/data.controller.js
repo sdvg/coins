@@ -2,42 +2,62 @@ import download from 'in-browser-download';
 import moment from 'moment';
 import { omit } from 'lodash';
 
-function DataController($timeout, hoodie, expenses, tags) {
-  'ngInject';
+export default class DataController {
+  constructor(
+    hoodie,
+    expenses,
+    tags
+  ) {
+    'ngInject';
 
-  /** placeholder for <input> $element */
-  this.importJsonInput = null;
+    this.hoodie = hoodie;
+    this.expenses = expenses;
+    this.tags = tags;
+  }
 
-  const statNumbers = {
-    tags: null,
-    expenses: null
-  };
+  $onInit() {
+    this.statNumbers = {
+      tags: null,
+      expenses: null
+    };
 
-  tags.getCount().then(count => {
-    statNumbers.tags = count;
-  });
+    /** placeholder for <input> $element */
+    this.importJsonInput = null;
 
-  expenses.getCount().then(count => {
-    statNumbers.expenses = count;
-  });
+    this.tags.getCount().then(count => {
+      this.statNumbers.tags = count;
+    });
 
-  this.areStatNumbersReady = () => statNumbers.tags !== null && statNumbers.expenses !== null;
-  this.getExpensesCount = () => statNumbers.expenses;
-  this.getTagsCount = () => statNumbers.tags;
+    this.expenses.getCount().then(count => {
+      this.statNumbers.expenses = count;
+    });
+  }
 
-  this.exportJson = () => {
-    hoodie.store.findAll().then(data => {
+  areStatNumbersReady() {
+    return this.statNumbers.tags !== null && this.statNumbers.expenses !== null;
+  }
+
+  getExpensesCount() {
+    return this.statNumbers.expenses;
+  }
+
+  getTagsCount() {
+    return this.statNumbers.tags;
+  }
+
+  exportJson() {
+    this.hoodie.store.findAll().then(data => {
       download(
         JSON.stringify(data),
         `coins-export-${moment().format('YYYY-MM-DD')}.json`,
         `application/json`
       );
     });
-  };
+  }
 
-  this.eraseData = () => {
+  eraseData() {
     if (confirm('Are you sure that you want to delete all tags and expenses?')) {
-      hoodie.store.removeAll().then(
+      this.hoodie.store.removeAll().then(
         () => {
           alert('Erased all data.');
         },
@@ -47,28 +67,23 @@ function DataController($timeout, hoodie, expenses, tags) {
         }
       );
     }
-  };
+  }
 
-  $timeout(() => {
-    this.importJsonInput.on('change', changeEvent => {
+  importJsonInputReady($element) {
+    $element.on('change', changeEvent => {
       const file = changeEvent.target.files[0];
       const reader = new FileReader();
 
       reader.onload = readerEvent => {
-        // todo: keep ids
-        // todo: error handling
-        // todo: prevent duplicates
         const importData = JSON.parse(readerEvent.target.result);
-        console.log('import', importData);
 
+        // @todo: success / error handling
         importData.forEach(item => {
-          // hoodie.store.add(omit(item, ['id', '_rev']));
+          hoodie.store.updateOrAdd(item);
         });
       };
 
       reader.readAsText(file);
     });
-  });
+  }
 }
-
-export default DataController;

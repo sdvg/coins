@@ -10,6 +10,7 @@ export default angular.module('expenses',
 
     // core
     require('./core/core.module').name,
+    require('./core/directives/linkElement/link-element.directive').name,
 
     // components
     require('./components/views/start/start').name,

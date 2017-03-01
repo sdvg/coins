@@ -6,5 +6,6 @@ export default angular
   .module('data', [])
   .component('data', {
     templateUrl: dataTpl,
-    controller: DataController
+    controller: DataController,
+    controllerAs: 'dataCtrl'
   });
