@@ -1,7 +1,7 @@
-import {orderBy, groupBy} from 'lodash';
-import {toWordsOrdinal} from 'number-to-words';
+import { orderBy, groupBy } from 'lodash';
+import { toWordsOrdinal } from 'number-to-words';
 
-function OverviewController($scope, $stateParams, $filter, expenses) {
+function OverviewController($scope, $stateParams, $filter, dataFactory) {
   'ngInject';
 
   this.currentMonth = new Date($stateParams.year, $stateParams.month - 1);
@@ -24,7 +24,7 @@ function OverviewController($scope, $stateParams, $filter, expenses) {
   this.expensesByDay = null;
 
   const fetchExpenses = () => {
-    expenses.findByMonth(this.currentMonth).then(expenses => {
+    dataFactory.findExpensesByMonth(this.currentMonth).then(expenses => {
       if (expenses.length > 0) {
         const orderedExpenses = orderBy(expenses, 'date', 'desc');
 
@@ -41,11 +41,9 @@ function OverviewController($scope, $stateParams, $filter, expenses) {
   };
 
   fetchExpenses();
-  expenses.onUpdate(fetchExpenses);
 
-  $scope.$on('$destroy', () => {
-    expenses.unsubscribeUpdate(fetchExpenses);
-  });
+  const unsubscribeExpenseUpdates = dataFactory.onExpenseUpdate(fetchExpenses);
+  $scope.$on('$destroy', unsubscribeExpenseUpdates);
 
   this.numberToWordsOrdinal = timestamp => {
     return toWordsOrdinal(new Date(parseInt(timestamp, 10)).getDate());

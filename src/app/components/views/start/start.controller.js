@@ -1,9 +1,11 @@
 function StartController($state, account) {
   'ngInject';
 
-  if (account.isSignedIn()) {
-    $state.go('overview');
-  }
+  account.isSignedIn().then(isSignedIn => {
+    if (isSignedIn) {
+      $state.go('overview');
+    }
+  });
 }
 
 export default StartController;

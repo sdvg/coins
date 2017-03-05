@@ -1,10 +1,11 @@
 function SignInController($state, account) {
   'ngInject';
-console.log(45, account)
-  if (account.isSignedIn()) {
-    $state.go('start');
-    return;
-  }
+
+  account.isSignedIn().then(isSignedIn => {
+    if (isSignedIn) {
+      $state.go('overview');
+    }
+  });
 
   this.submit = user => {
     const credentials = {
@@ -14,8 +15,7 @@ console.log(45, account)
 
     account.signIn(credentials).then(
       () => {
-        // workaround for https://github.com/hoodiehq/hoodie/issues/503
-        location.href = $state.href('overview');
+        $state.go('overview');
       },
 
       error => {

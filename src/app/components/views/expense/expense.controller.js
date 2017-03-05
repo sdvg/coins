@@ -1,4 +1,4 @@
-function ExpenseController($scope, $state, $stateParams, expenses, tags) {
+function ExpenseController($scope, $state, $stateParams, dataFactory) {
   'ngInject';
 
   this.isNew = !$stateParams.id;
@@ -8,7 +8,7 @@ function ExpenseController($scope, $state, $stateParams, expenses, tags) {
       date: new Date()
     };
   } else {
-    expenses.find($stateParams.id).then(
+    dataFactory.findExpense($stateParams.id).then(
       expense => {
         this.expense = {
           ...expense,
@@ -21,18 +21,18 @@ function ExpenseController($scope, $state, $stateParams, expenses, tags) {
     );
   }
 
-  tags.getSorted().then(allTags => {
+  dataFactory.findSortedTags().then(allTags => {
     this.availableTags = allTags;
   });
 
   this.submit = expense => {
-    const method = expense.id ? 'update' : 'add';
-    expenses[method](expense).then(() => $state.go('overview'));
+    const method = expense.id ? 'updateExpense' : 'addExpense';
+    dataFactory[method](expense).then(() => $state.go('overview'));
   };
 
   this.remove = expense => {
     if (confirm('Are you sure that you want to remove this expense?')) {
-      expenses.remove(expense.id).then(() => $state.go('overview'));
+      dataFactory.removeExpense(expense.id).then(() => $state.go('overview'));
     }
   };
 }
