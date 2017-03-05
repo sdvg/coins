@@ -1,17 +1,14 @@
 function accountFactory($q, hoodie) {
   'ngInject';
-  const account = hoodie.account;
+
+  const wrapMethod = methodName => (...args) => $q.when(hoodie.ready.then(
+    () => hoodie.account[methodName].apply(hoodie.account, args)
+  ));
 
   return {
-    signUp() {
-      return $q.when(account.signUp.apply(account, arguments));
-    },
-    signIn() {
-      return $q.when(account.signIn.apply(account, arguments));
-    },
-    isSignedIn() {
-      return hoodie.account.isSignedIn();
-    }
+    signUp: wrapMethod('signUp'),
+    signIn: wrapMethod('signIn'),
+    isSignedIn: wrapMethod('isSignedIn')
   };
 }
 

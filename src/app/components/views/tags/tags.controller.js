@@ -1,13 +1,13 @@
-function TagsController($timeout, tags) {
+function TagsController($timeout, dataFactory) {
   'ngInject';
 
-  tags.getSorted().then(allTags => {
+  dataFactory.findSortedTags().then(allTags => {
     this.tags = allTags;
   });
 
   this.saveTag = tag => {
     if (tag.id) {
-      tags.update(tag).then(
+      dataFactory.updateTag(tag).then(
           doc => {
             const tagIdx = this.tags.findIndex(_tag => _tag.id === tag.id);
             this.tags[tagIdx] = doc;
@@ -17,7 +17,7 @@ function TagsController($timeout, tags) {
           }
       );
     } else {
-      tags.add(tag);
+      dataFactory.addTag(tag);
     }
   };
 
@@ -25,7 +25,7 @@ function TagsController($timeout, tags) {
     const tagIdx = this.tags.findIndex(_tag => _tag.id === tag.id);
 
     if (tag.id) {
-      tags.remove(tag).then(() => {
+      dataFactory.removeTag(tag).then(() => {
         this.tags.splice(tagIdx, 1);
       });
     } else { // not saved yet
