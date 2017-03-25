@@ -106,25 +106,37 @@ const dataFactory = ($q, hoodie) => {
     }
   };
 
+  /** general */
+  const find = (...args) => hoodie.ready.then(() => hoodie.store.find(...args));
+  const findAllData = () => hoodie.ready.then(() => hoodie.store.findAll());
+  const removeAll = () => hoodie.ready.then(() => hoodie.store.removeAll());
+  const removeAllData = () => hoodie.ready.then(() => hoodie.store.removeAll());
+  const updateOrAdd = (...args) => hoodie.ready.then(() => hoodie.store.updateOrAdd(...args));
+
   return {
     /** map methods results in $q promises */
     ...mapValues(
       {
-        findTag,
-        findAllTags,
-        findSortedTags,
-        getTagCount,
-        addTag,
-        updateTag,
-        removeTag,
-        findExpense,
-        findAllExpenses,
-        findExpensesByMonth,
-        getExpenseCount,
         addExpense,
-        updateExpense,
+        addTag,
+        find,
+        findAllData,
+        findAllExpenses,
+        findAllTags,
+        findExpense,
+        findExpensesByMonth,
+        findSortedTags,
+        findTag,
+        getExpenseCount,
+        getTagCount,
+        onExpenseUpdate,
+        removeAll,
+        removeAllData,
         removeExpense,
-        onExpenseUpdate
+        removeTag,
+        updateExpense,
+        updateOrAdd,
+        updateTag,
       },
       method => (...args) => $q.when(method.apply(undefined, args))
     ),
