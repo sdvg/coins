@@ -1,0 +1,23 @@
+<div class="overview-stats">
+  <ol
+    class="categories"
+    ng-class="{ 'is-open': $ctrl.isOpen }"
+    ng-click="$ctrl.toggleOpen()"
+  >
+    <li
+      class="category"
+      title="{{ tag.name }} - {{ tag.expensesSum | number: 2 }} - {{ tag.percentageAmount | number: 2 }}%"
+      ng-style="{
+        background: tag.color,
+        width: tag.percentageAmount + '%',
+      }"
+      ng-repeat="tag in $ctrl.tags | orderBy: '-expensesSum'"
+    >
+      <span class="category-label">
+        {{ tag.name }}
+        <b>{{ tag.expensesSum | number: 2 }}</b>
+        ({{ tag.percentageAmount | number: 2 }}%)
+      </span>
+    </li>
+  </ol>
+</div>

@@ -9,6 +9,10 @@
     @include make-container-max-widths();
   }
 
+  .navbar {
+    border-radius: 0;
+  }
+
   .navbar-toggleable-xs {
     clear: right;
   }

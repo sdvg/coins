@@ -6,7 +6,8 @@
     line-height: 30px;
   }
 
-  .table-container {
+  .table-container,
+  .overview-stats {
     @media (min-width: 768px) {
       @include make-container();
       @include make-container-max-widths();
@@ -34,6 +35,10 @@
     .col-amount {
       width: 1px;
       white-space: nowrap;
+    }
+
+    .col-date {
+      border-left: .5rem solid;
     }
 
     a {

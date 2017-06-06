@@ -1,3 +1,4 @@
+import randomColor from 'randomcolor';
 import { mapValues } from 'lodash';
 
 const dataFactory = ($q, hoodie) => {
@@ -81,7 +82,10 @@ const dataFactory = ($q, hoodie) => {
         .map(expense => {
           return findTag(expense.tag).then(
             tag => {
-              expense.tagData = tag;
+              expense.tagData = {
+                ...tag,
+                color: randomColor({seed: tag.id}),
+              };
               return expense;
             },
             err => {
@@ -91,6 +95,30 @@ const dataFactory = ($q, hoodie) => {
     });
 
     return promise.then(promises => $q.all(promises));
+  };
+
+  /** Stats */
+  const findTagsByExpensesInMonth = date => {
+    return findExpensesByMonth(date)
+      .then(expenses => {
+        return expenses.reduce(
+          (accumulator, currentValue) => {
+            if (accumulator[currentValue.tag]) {
+              accumulator[currentValue.tag].expensesSum += currentValue.amount;
+            }
+            else {
+              accumulator[currentValue.tag] = {
+                expensesSum: currentValue.amount,
+                ...currentValue.tagData
+              };
+            }
+
+            return accumulator;
+          },
+          {}
+        );
+      })
+      .then(expensesObject => Object.values(expensesObject));
   };
 
   const onExpenseUpdate = callback => {
@@ -130,6 +158,7 @@ const dataFactory = ($q, hoodie) => {
         getExpenseCount,
         getTagCount,
         onExpenseUpdate,
+        findTagsByExpensesInMonth,
         removeAll,
         removeAllData,
         removeExpense,
