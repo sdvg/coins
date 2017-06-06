@@ -7,7 +7,10 @@
   >
     <tbody>
       <tr ng-repeat="tag in $ctrl.tags track by $index">
-        <td>
+        <td
+          class="col-name"
+          ng-style="{ borderLeftColor: tag.color }"
+        >
           <input
             class="form-control"
             type="text"

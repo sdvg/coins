@@ -56,7 +56,11 @@ const dataFactory = ($q, hoodie) => {
           .sort((a, b) => { // then by number of expenses
             return weightedTagIds[b.id] - weightedTagIds[a.id];
           });
-      });
+      })
+      .then(tags => tags.map(tag => ({
+        ...tag,
+        color: randomColor({ seed: tag.id }),
+      })));
   };
 
   /** expenses */
@@ -84,7 +88,7 @@ const dataFactory = ($q, hoodie) => {
             tag => {
               expense.tagData = {
                 ...tag,
-                color: randomColor({seed: tag.id}),
+                color: randomColor({ seed: tag.id }),
               };
               return expense;
             },
