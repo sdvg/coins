@@ -1,5 +1,4 @@
 import { orderBy, groupBy } from 'lodash';
-import { toWordsOrdinal } from 'number-to-words';
 
 function OverviewController($scope, $stateParams, $filter, dataFactory) {
   'ngInject';
@@ -44,10 +43,6 @@ function OverviewController($scope, $stateParams, $filter, dataFactory) {
 
   const unsubscribeExpenseUpdates = dataFactory.onExpenseUpdate(fetchExpenses);
   $scope.$on('$destroy', unsubscribeExpenseUpdates);
-
-  this.numberToWordsOrdinal = timestamp => {
-    return toWordsOrdinal(new Date(parseInt(timestamp, 10)).getDate());
-  };
 }
 
 export default OverviewController;

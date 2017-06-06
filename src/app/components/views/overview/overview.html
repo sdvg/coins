@@ -38,7 +38,7 @@
     ng-repeat="(day, expenses) in $ctrl.expensesByDay"
   >
     <h3 class="table-subheadline">
-      {{ day | date: 'EEEE, MMMM' }} the {{ $ctrl.numberToWordsOrdinal(day) | capitalize }}
+      {{ day | date: 'EEEE, yyyy-MM-dd' }}
     </h3>
 
     <table class="table table-striped">
