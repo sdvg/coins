@@ -1,4 +1,16 @@
 {
-	"plugins": ["transform-runtime", "add-module-exports"],
-    "presets": ["angular", "es2017"]
+  "plugins": [
+    "transform-object-rest-spread",
+    "angularjs-annotate"
+  ],
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions"]
+        }
+      }
+    ]
+  ]
 }
