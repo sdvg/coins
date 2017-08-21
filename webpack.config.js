@@ -95,10 +95,10 @@ module.exports = {
     open: true,
     historyApiFallback: true
   },
-
   entry: './src/index.js',
   output: {
     filename: 'app.[chunkhash].js',
     path: path.resolve(__dirname, 'dist')
-  }
+  },
+  stats: 'minimal'
 }
