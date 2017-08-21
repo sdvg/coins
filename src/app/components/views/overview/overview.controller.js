@@ -1,48 +1,48 @@
-import { orderBy, groupBy } from 'lodash';
+import { orderBy, groupBy } from 'lodash'
 
-function OverviewController($scope, $stateParams, $filter, dataFactory) {
-  'ngInject';
+function OverviewController ($scope, $stateParams, $filter, dataFactory) {
+  'ngInject'
 
-  this.currentMonth = new Date($stateParams.year, $stateParams.month - 1);
+  this.currentMonth = new Date($stateParams.year, $stateParams.month - 1)
 
-  const previousMonth = new Date(this.currentMonth);
-  previousMonth.setMonth(this.currentMonth.getMonth() - 1);
+  const previousMonth = new Date(this.currentMonth)
+  previousMonth.setMonth(this.currentMonth.getMonth() - 1)
   this.previousMonthLinkParams = {
     year: $filter('date')(previousMonth, 'yyyy'),
     month: $filter('date')(previousMonth, 'MM')
-  };
+  }
 
-  const nextMonth = new Date(this.currentMonth);
-  nextMonth.setMonth(this.currentMonth.getMonth() + 1);
+  const nextMonth = new Date(this.currentMonth)
+  nextMonth.setMonth(this.currentMonth.getMonth() + 1)
   this.nextMonthLinkParams = {
     year: $filter('date')(nextMonth, 'yyyy'),
     month: $filter('date')(nextMonth, 'MM')
-  };
+  }
 
-  this.monthExpenses = null;
-  this.expensesByDay = null;
+  this.monthExpenses = null
+  this.expensesByDay = null
 
   const fetchExpenses = () => {
     dataFactory.findExpensesByMonth(this.currentMonth).then(expenses => {
       if (expenses.length > 0) {
-        const orderedExpenses = orderBy(expenses, 'date', 'desc');
+        const orderedExpenses = orderBy(expenses, 'date', 'desc')
 
         this.expensesByDay = groupBy(orderedExpenses, expense => {
-          const date = new Date(expense.date);
-          return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
-        });
+          const date = new Date(expense.date)
+          return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
+        })
       }
 
       this.monthExpenses = expenses
           .map(val => val.amount)
-          .reduce((prev, curr) => prev + curr, 0);
-    });
-  };
+          .reduce((prev, curr) => prev + curr, 0)
+    })
+  }
 
-  fetchExpenses();
+  fetchExpenses()
 
-  const unsubscribeExpenseUpdates = dataFactory.onExpenseUpdate(fetchExpenses);
-  $scope.$on('$destroy', unsubscribeExpenseUpdates);
+  const unsubscribeExpenseUpdates = dataFactory.onExpenseUpdate(fetchExpenses)
+  $scope.$on('$destroy', unsubscribeExpenseUpdates)
 }
 
-export default OverviewController;
+export default OverviewController

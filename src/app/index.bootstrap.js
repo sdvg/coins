@@ -1,6 +1,6 @@
-import angular from 'angular';
-import './index.module';
+import angular from 'angular'
+import './index.module'
 
 angular.element(document).ready(() => {
-  angular.bootstrap(document, ['expenses'], {strictDi: true});
-});
+  angular.bootstrap(document, ['expenses'], {strictDi: true})
+})

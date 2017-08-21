@@ -1,3 +1,5 @@
+import angular from 'angular'
+
 export default angular.module('linkElement', [])
   .directive('linkElement', () => ({
     restrict: 'A',
@@ -6,10 +8,10 @@ export default angular.module('linkElement', [])
     },
     bindToController: true,
     controller: function ($element) {
-      'ngInject';
+      'ngInject'
 
       this.$onInit = () => {
-        this.linkElement({ $element });
-      };
+        this.linkElement({ $element })
+      }
     }
-  }));
+  }))

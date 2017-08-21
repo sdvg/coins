@@ -1,9 +1,11 @@
-function config($compileProvider, $logProvider) {
-  'ngInject';
+/* global NODE_ENV */
 
-  const isDev = NODE_ENV === 'development';
-  $logProvider.debugEnabled(isDev);
-  $compileProvider.debugInfoEnabled(isDev);
+function config ($compileProvider, $logProvider) {
+  'ngInject'
+
+  const isDev = NODE_ENV === 'development'
+  $logProvider.debugEnabled(isDev)
+  $compileProvider.debugInfoEnabled(isDev)
 }
 
-export default config;
+export default config

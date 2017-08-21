@@ -1,6 +1,8 @@
+/* global NODE_ENV */
+
 export default {
   hoodieUrl: {
-    development: `${location.protocol}//${location.hostname}:2048`,
-    production: `${location.protocol}//${location.hostname}:${location.port}`
+    development: `${window.location.protocol}//${window.location.hostname}:2048`,
+    production: `${window.location.protocol}//${window.location.hostname}:${window.location.port}`
   }[NODE_ENV]
-};
+}

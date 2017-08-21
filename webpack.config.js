@@ -1,12 +1,12 @@
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const AppCachePlugin = require('appcache-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const AppCachePlugin = require('appcache-webpack-plugin')
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
+const NODE_ENV = process.env.NODE_ENV || 'development'
 
 module.exports = {
   plugins: [
@@ -68,7 +68,7 @@ module.exports = {
               }
             }
           ]
-        }),
+        })
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -100,5 +100,5 @@ module.exports = {
   output: {
     filename: 'app.[chunkhash].js',
     path: path.resolve(__dirname, 'dist')
-  },
-};
+  }
+}

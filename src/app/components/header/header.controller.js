@@ -1,9 +1,9 @@
-function HeaderController() {
-  this.isMenuExpanded = false;
+function HeaderController () {
+  this.isMenuExpanded = false
 
   this.toggleMenu = () => {
-    this.isMenuExpanded = !this.isMenuExpanded;
-  };
+    this.isMenuExpanded = !this.isMenuExpanded
+  }
 }
 
-export default HeaderController;
+export default HeaderController

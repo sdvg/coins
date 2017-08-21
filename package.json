@@ -14,24 +14,8 @@
     "dev-server": "NODE_ENV=development webpack-dev-server",
     "dev": "concurrently 'hoodie' 'npm run dev-server'",
     "build": "NODE_ENV=production webpack -p",
-    "lint": "xo 'src/**/*.js'",
+    "lint": "standard",
     "start": "hoodie"
-  },
-  "xo": {
-    "space": true,
-    "esnext": true,
-    "envs": [
-      "browser"
-    ],
-    "globals": [
-      "NODE_ENV",
-      "angular"
-    ],
-    "rules": {
-      "import/no-unassigned-import": "off",
-      "max-params": "off",
-      "no-alert": "off"
-    }
   },
   "dependencies": {
     "@hoodie/client": "^9.0.2",
@@ -57,6 +41,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "clean-webpack-plugin": "^0.1.16",
+    "concurrently": "^3.5.0",
     "css-loader": "^0.28.5",
     "eslint": "^3.12.2",
     "extract-text-webpack-plugin": "^3.0.0",
@@ -67,10 +52,10 @@
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",
+    "standard": "^10.0.3",
     "style-loader": "^0.18.2",
     "web-app-manifest-loader": "^0.1.1",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1",
-    "xo": "^0.17.1"
+    "webpack-dev-server": "^2.7.1"
   }
 }

@@ -1,7 +1,7 @@
-function expensesFactory($q, hoodie, tags) {
-  'ngInject';
+function expensesFactory ($q, hoodie, tags) {
+  'ngInject'
 
-  const store = hoodie.store('expense');
+  const store = hoodie.store('expense')
 
   return {
     add: store.add.bind(store),
@@ -13,40 +13,40 @@ function expensesFactory($q, hoodie, tags) {
     unsubscribeUpdate: callback => store.off('change', callback),
     getCount,
     findByMonth
-  };
+  }
 
-  function findByMonth(date) {
-    const year = date.getYear();
-    const month = date.getMonth();
+  function findByMonth (date) {
+    const year = date.getYear()
+    const month = date.getMonth()
 
     const promise = store.findAll().then(data => {
       return data
         .filter(expense => {
-          const expenseDate = new Date(expense.date);
-          return expenseDate.getYear() === year && expenseDate.getMonth() === month;
+          const expenseDate = new Date(expense.date)
+          return expenseDate.getYear() === year && expenseDate.getMonth() === month
         })
 
         .map(expense => {
           return tags.find(expense.tag).then(
             tag => {
-              expense.tagData = tag;
-              return expense;
+              expense.tagData = tag
+              return expense
             },
             err => {
-              console.error('Tag for expense not found.', err);
-            });
-        });
-    });
+              console.error('Tag for expense not found.', err)
+            })
+        })
+    })
 
-    return $q.when(promise).then(promises => $q.all(promises));
+    return $q.when(promise).then(promises => $q.all(promises))
   }
 
-  function getCount() {
-    const promise = store.findAll().then(expenses => expenses.length);
-    return $q.when(promise);
+  function getCount () {
+    const promise = store.findAll().then(expenses => expenses.length)
+    return $q.when(promise)
   }
 }
 
 export default function (app) {
-  app.factory('expenses', expensesFactory);
+  app.factory('expenses', expensesFactory)
 }

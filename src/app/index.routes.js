@@ -1,10 +1,12 @@
+import angular from 'angular'
+
 export default angular
   .module('index.routes', [])
   .config(($locationProvider, $urlRouterProvider, $stateProvider) => {
-    'ngInject';
+    'ngInject'
 
-    $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true)
+    $urlRouterProvider.otherwise('/')
 
     $stateProvider
       .state('start', {
@@ -22,12 +24,12 @@ export default angular
       .state('overview', {
         url: '/overview/',
         controller: ($state, $filter) => {
-          const currentDate = new Date();
+          const currentDate = new Date()
 
           $state.go('overviewMonth', {
             year: $filter('date')(currentDate, 'yyyy'),
             month: $filter('date')(currentDate, 'MM')
-          });
+          })
         }
       })
       .state('overviewMonth', {
@@ -50,6 +52,4 @@ export default angular
         url: '/signIn',
         template: '<sign-in></sign-in>'
       })
-    ;
-  });
-
+  })
