@@ -18,21 +18,14 @@
     "start": "hoodie"
   },
   "dependencies": {
+    "hoodie": "^27.2.0"
+  },
+  "devDependencies": {
     "@hoodie/client": "^9.0.2",
     "angular": "^1.6.0",
     "angular-eha.capitalize": "^1.1.0",
     "angular-ui-router": "^0.3.2",
     "angular-validation-match": "^1.9.0",
-    "bootstrap": "4.0.0-alpha.2",
-    "hoodie": "^27.2.0",
-    "in-browser-download": "^1.0.0",
-    "jquery": "^3.1.1",
-    "lodash": "~4.17.2",
-    "moment": "^2.17.1",
-    "pouchdb-browser": "^6.1.0",
-    "randomcolor": "^0.5.2"
-  },
-  "devDependencies": {
     "appcache-webpack-plugin": "^1.3.0",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.26.0",
@@ -40,6 +33,7 @@
     "babel-plugin-angularjs-annotate": "^0.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "bootstrap": "4.0.0-alpha.2",
     "clean-webpack-plugin": "^0.1.16",
     "concurrently": "^3.5.0",
     "css-loader": "^0.28.5",
@@ -47,9 +41,15 @@
     "file-loader": "^0.11.2",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
+    "in-browser-download": "^1.0.0",
+    "jquery": "^3.1.1",
+    "lodash": "~4.17.2",
+    "moment": "^2.17.1",
     "ngtemplate-loader": "^2.0.1",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
+    "pouchdb-browser": "^6.1.0",
+    "randomcolor": "^0.5.2",
     "sass-loader": "^6.0.6",
     "standard": "^10.0.3",
     "style-loader": "^0.18.2",
