@@ -16,8 +16,16 @@
     Sign Up
   </a>
 
-
   <p class="signIn-hint">
     <a ui-sref="signIn">Already have a account?</a>
   </p>
 </main>
+
+<div ng-init="counter = 1">
+  <start-react
+    count="counter"
+    on-reset="counter = 0"
+  ></start-react>
+
+  <button ng-click="counter = counter + 1">increase</button>
+</div>
