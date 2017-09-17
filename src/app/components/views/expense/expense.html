@@ -19,13 +19,14 @@
       <input
         class="form-control"
         id="expense-amount"
-        type="number"
-        min="0.01"
+        type="tel"
         ng-model="$ctrl.expense.amount"
         name="amount"
         placeholder="How much did you spend?"
+        amount-input
         required
       >
+
       <div
         class="text-help"
         ng-show="form.$submitted && form.amount.$invalid"

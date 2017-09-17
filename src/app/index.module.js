@@ -8,6 +8,7 @@ import appConfig from './index.app-config'
 import core from './core/core.module'
 import routes from './index.routes'
 import linkElementDirective from './core/directives/linkElement/link-element.directive'
+import amountInputDirective from './core/directives/amountInput/amount-input.directive'
 import StartComponent from './components/views/start/start'
 import SignUpComponent from './components/views/sign-up/sign-up'
 import SignInComponent from './components/views/sign-in/sign-in'
@@ -27,6 +28,7 @@ angular.module('expenses',
     // core
     core.name,
     linkElementDirective.name,
+    amountInputDirective.name,
 
     // components
     StartComponent.name,
